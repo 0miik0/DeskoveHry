@@ -3,9 +3,9 @@ import javax.swing.*;
 public class Okno extends JFrame{
 
     private JTextField tfNazev;
-    private JButton btn1;
+    private JButton btnPredchozi;
     private JButton btn2;
-    private JButton btn3;
+    private JButton btnDalsi;
     private JPanel oknoMain;
     private Model model = new Model();
     private int indexAktualniHry = 0;
@@ -17,11 +17,11 @@ public class Okno extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(400, 300);
         zobrazDeskovku();
-        btn1.addActionListener(e -> {
+        btnPredchozi.addActionListener(e -> {
             indexAktualniHry--;
             zobrazDeskovku();
         });
-        btn3.addActionListener(e -> {
+        btnDalsi.addActionListener(e -> {
             indexAktualniHry++;
             zobrazDeskovku();
         });
