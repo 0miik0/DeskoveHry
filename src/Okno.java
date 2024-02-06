@@ -48,14 +48,14 @@ public class Okno extends JFrame{
         if (!ziskejSeznamDeskovek().isEmpty()){
             zobrazDeskovku();
         } else {
-            JOptionPane.showMessageDialog(this, "There is nothing in the list", "Error", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Nebyly nalezeny žádné další deskovky.", "Error", JOptionPane.INFORMATION_MESSAGE);
         }
 
 
-        ButtonGroup btnGroup = new ButtonGroup();
-        btnGroup.add(RB1);
-        btnGroup.add(RB2);
-        btnGroup.add(RB3);
+        ButtonGroup oblibenost = new ButtonGroup();
+        oblibenost.add(RB1);
+        oblibenost.add(RB2);
+        oblibenost.add(RB3);
         RB1.addItemListener(e -> handleRadioButtonClick(1));
         RB2.addItemListener(e -> handleRadioButtonClick(2));
         RB3.addItemListener(e -> handleRadioButtonClick(3));
@@ -89,14 +89,13 @@ public class Okno extends JFrame{
             for (Deskovka deskovka1 : seznamDeskovek) {
                 writer.println(deskovka1.getNazev() + ";" + (deskovka1.isZakoupeno() ? "zakoupeno" : "nezakoupeno") + ";" + deskovka1.getCislo());
             }
-            JOptionPane.showMessageDialog(this, "Změny byly uloženy do souboru.", "Message saved", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Změny byly uloženy do souboru.", "Info", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException e) {
-            System.err.println("Error writing to file: " + e.getLocalizedMessage());
+            System.err.println("Při psaní do souboru nastal error: " + e.getLocalizedMessage());
         }
     }
 
     public void zobrazDeskovku() {
-        //osetrit kdyz je seznam prazdny - if seznam prazdny
         Deskovka aktualniDeskovka = model.getDeskovka(indexAktualniHry);
         tfNazev.setText(aktualniDeskovka.getNazev());
         zakoupenoCB.setSelected(aktualniDeskovka.isZakoupeno());
