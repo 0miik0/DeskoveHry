@@ -4,9 +4,9 @@ import java.util.List;
 public class Model {
     private final List<Deskovka> seznamDeskovek = new ArrayList<>();
     public Model(){
-        seznamDeskovek.add(new Deskovka("a", Boolean.TRUE, 2));
-        seznamDeskovek.add(new Deskovka("b", Boolean.FALSE, 1));
-        seznamDeskovek.add(new Deskovka("c", Boolean.TRUE, 3));
+        seznamDeskovek.add(new Deskovka("Carcassonne", Boolean.TRUE, 2));
+        seznamDeskovek.add(new Deskovka("Catan", Boolean.FALSE, 1));
+        seznamDeskovek.add(new Deskovka("Dostihy a sázky", Boolean.TRUE, 3));
     }
     public List<Deskovka> ziskejSeznamDeskovek() {
         return seznamDeskovek;
