@@ -42,12 +42,15 @@ public class Okno extends JFrame{
         btnDalsi.addActionListener(e -> {
             indexAktualniHry++;
             zobrazDeskovku();
+            /*if(indexAktualniHry>seznamDeskovek.size()){
+                btnDalsi.setEnabled(false);
+            } */
+
         });
         btnUlozit.addActionListener(e -> ulozDoSouboru());
-        nactiZeSouboru();
-        if (!ziskejSeznamDeskovek().isEmpty()){
+        //nactiZeSouboru(); ??
+        if (ziskejSeznamDeskovek().isEmpty()){
             zobrazDeskovku();
-        } else {
             JOptionPane.showMessageDialog(this, "Nebyly nalezeny žádné další deskovky.", "Error", JOptionPane.INFORMATION_MESSAGE);
         }
 
@@ -60,6 +63,7 @@ public class Okno extends JFrame{
         RB2.addItemListener(e -> handleRadioButtonClick(2));
         RB3.addItemListener(e -> handleRadioButtonClick(3));
     }
+
 
     public void nactiZeSouboru() {
         try (Scanner sc = new Scanner(new BufferedReader(new FileReader("deskovky.txt")))) {
@@ -91,7 +95,7 @@ public class Okno extends JFrame{
             }
             JOptionPane.showMessageDialog(this, "Změny byly uloženy do souboru.", "Info", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException e) {
-            System.err.println("Při psaní do souboru nastal error: " + e.getLocalizedMessage());
+            JOptionPane.showMessageDialog(this, "Při psaní do souboru nastal error", "Info", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
