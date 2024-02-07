@@ -18,7 +18,7 @@ public class Okno extends JFrame{
     private Model model = new Model();
     private int indexAktualniHry = 0;
     private final List<Deskovka> seznamDeskovek = model.ziskejSeznamDeskovek();
-    private final int[] zobrazeneCislo = {1};
+    private int aktualniOblibenost;
 
     public Deskovka ziskejDeskovku(int i) {
         return seznamDeskovek.get(i);
@@ -27,7 +27,7 @@ public class Okno extends JFrame{
         return seznamDeskovek;
     }
     private void handleRadioButtonClick(int cislo) {
-        zobrazeneCislo[0] = cislo;
+        aktualniOblibenost = cislo;
     }
     public Okno(){
         super("Okno");
@@ -83,7 +83,7 @@ public class Okno extends JFrame{
         Deskovka deskovka = seznamDeskovek.get(indexAktualniHry);
         deskovka.setNazev(tfNazev.getText());
         deskovka.setZakoupeno(zakoupenoCB.isSelected());
-        deskovka.setCislo(zobrazeneCislo[0]);
+        deskovka.setCislo(aktualniOblibenost);
 
         try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("deskovky.txt")))) {
             for (Deskovka deskovka1 : seznamDeskovek) {
