@@ -45,9 +45,10 @@ public class Okno extends JFrame{
 
         });
         btnUlozit.addActionListener(e -> ulozDoSouboru());
-        //nactiZeSouboru();
-        if (ziskejSeznamDeskovek().isEmpty()){
-            zobrazDeskovku();
+        nactiZeSouboru();
+        if (!ziskejSeznamDeskovek().isEmpty()){
+            zobrazDeskovku();}
+        else{
             JOptionPane.showMessageDialog(this, "Nebyly nalezeny žádné další deskovky.", "Error", JOptionPane.INFORMATION_MESSAGE);
         }
 
