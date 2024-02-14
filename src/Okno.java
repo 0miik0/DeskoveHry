@@ -67,10 +67,10 @@ public class Okno extends JFrame{
         try (Scanner sc = new Scanner(new BufferedReader(new FileReader("deskovky.txt")))) {
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
-                String[] parts = line.split(";");
-                String nazev = (parts[0]);
-                boolean zakoupeno = parts[1].equals("zakoupeno");
-                int cislo = Integer.parseInt(parts[2]);
+                String[] bloky = line.split(";");
+                String nazev = (bloky[0]);
+                boolean zakoupeno = bloky[1].equals("zakoupeno");
+                int cislo = Integer.parseInt(bloky[2]);
                 Deskovka deskovka = new Deskovka(nazev, zakoupeno, cislo);
                 seznamDeskovek.add(deskovka);
             }
