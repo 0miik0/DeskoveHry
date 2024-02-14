@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.event.KeyEvent;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,7 @@ public class Okno extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(400, 300);
         zobrazDeskovku();
+        initMenu();
         btnPredchozi.addActionListener(e -> {
             indexAktualniHry--;
             zobrazDeskovku();
@@ -52,7 +54,6 @@ public class Okno extends JFrame{
             JOptionPane.showMessageDialog(this, "Nebyly nalezeny žádné další deskovky.", "Error", JOptionPane.INFORMATION_MESSAGE);
         }
 
-
         ButtonGroup oblibenost = new ButtonGroup();
         oblibenost.add(RB1);
         oblibenost.add(RB2);
@@ -62,7 +63,29 @@ public class Okno extends JFrame{
         RB3.addItemListener(e -> handleRadioButtonClick(3));
     }
 
+    private void initMenu(){
+        JMenuBar menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
 
+        JMenu fileMenu = new JMenu("Akce");
+        menuBar.add(fileMenu);
+
+        JMenuItem openItem = new JMenuItem("Pozdrav", KeyEvent.VK_P);
+        fileMenu.add(openItem);
+
+        JMenuItem aboutItem = new JMenuItem("O aplikaci...");
+        menuBar.add(aboutItem);
+
+        openItem.addActionListener(e -> pozdrav());
+        aboutItem.addActionListener(e ->{
+            JOptionPane.showMessageDialog(this, "Hellooooooo");
+        });
+
+    }
+
+    private void pozdrav() {
+        JOptionPane.showMessageDialog(this, "Ahoj!");
+    }
     public void nactiZeSouboru() {
         try (Scanner sc = new Scanner(new BufferedReader(new FileReader("deskovky.txt")))) {
             while (sc.hasNextLine()) {
@@ -110,5 +133,6 @@ public class Okno extends JFrame{
     public static void main(String[] args) {
         Okno okno = new Okno();
         okno.setVisible(true);
+
     }
 }
