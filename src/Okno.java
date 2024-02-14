@@ -42,9 +42,6 @@ public class Okno extends JFrame{
         btnDalsi.addActionListener(e -> {
             indexAktualniHry++;
             zobrazDeskovku();
-            /*if(indexAktualniHry>seznamDeskovek.size()){
-                btnDalsi.setEnabled(false);
-            } */
 
         });
         btnUlozit.addActionListener(e -> ulozDoSouboru());
